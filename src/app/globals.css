@@ -1,0 +1,283 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ========================================
+   HIDE ALL SCROLLBARS - PREMIUM CLEAN LOOK
+   ======================================== */
+
+/* Global - Hide all scrollbars */
+* {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+*::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+  width: 0;
+  height: 0;
+}
+
+html,
+body {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none;
+}
+
+/* Ensure smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Animated Gradient Background */
+body {
+  background: linear-gradient(-45deg, #000000, #0a0a0a, #1a1a1a, #0d0d0d);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+  min-height: 100vh;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Glass Morphism Utilities */
+@layer utilities {
+  .glass {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  }
+  
+  .glass-strong {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(25px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.45);
+  }
+  
+  .glass-button {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+  }
+  
+  .glass-button:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px 0 rgba(0, 0, 0, 0.3);
+  }
+
+  .animate-fadeIn {
+    animation: fadeIn 0.3s ease-in;
+  }
+
+  /* Additional hide scrollbar utilities */
+  .no-scrollbar,
+  .scrollbar-hide {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .no-scrollbar::-webkit-scrollbar,
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Minimalist Transaction Card Styles */
+  .transaction-card {
+    @apply bg-white/[0.03] backdrop-blur-sm border border-white/10 rounded-xl;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .transaction-card:hover {
+    @apply bg-white/[0.06] border-white/15;
+    box-shadow: 0 4px 20px rgba(255, 255, 255, 0.05);
+  }
+
+  /* Subtle Ripple Effect */
+  .ripple-effect {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .ripple-effect::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+
+  .ripple-effect:active::after {
+    opacity: 1;
+  }
+
+  /* Monospace Financial Values */
+  .value-mono {
+    font-family: var(--font-geist-mono), 'SF Mono', 'Monaco', 'Cascadia Code', 'Consolas', monospace;
+    font-feature-settings: 'tnum' 1, 'lnum' 1;
+    letter-spacing: -0.01em;
+  }
+}
+
+@layer base {
+  body {
+    @apply bg-background text-white antialiased;
+    background: radial-gradient(circle at 50% 0%, rgba(229, 229, 229, 0.03) 0%, #000000 50%);
+    font-family: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    letter-spacing: -0.011em;
+  }
+}
+
+@layer components {
+  /* Glass Card - Advanced Glassmorphism */
+  .glass-card {
+    @apply bg-glass-bg backdrop-blur-lg border border-glass-border rounded-2xl;
+    background: rgba(26, 26, 26, 0.6);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  }
+
+  /* Glass Card Hover */
+  .glass-card-hover {
+    @apply glass-card transition-all duration-300 hover:bg-glass-hover hover:shadow-glow;
+  }
+  
+  /* Glass Card Strong */
+  .glass-card-strong {
+    @apply backdrop-blur-xl border border-glass-border rounded-2xl;
+    background: rgba(26, 26, 26, 0.8);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+  }
+
+  /* Text Hierarchy */
+  .text-primary {
+    @apply text-white;
+  }
+
+  .text-secondary {
+    @apply text-white/60;
+  }
+
+  .text-tertiary {
+    @apply text-white/40;
+  }
+
+  /* Financial Values */
+  .value-large {
+    @apply font-mono text-4xl md:text-5xl font-bold;
+    font-feature-settings: 'tnum' 1, 'lnum' 1;
+    letter-spacing: -0.02em;
+  }
+
+  .value-medium {
+    @apply font-mono text-2xl md:text-3xl font-semibold;
+    font-feature-settings: 'tnum' 1, 'lnum' 1;
+    letter-spacing: -0.015em;
+  }
+
+  .value-small {
+    @apply font-mono text-xl font-medium;
+    font-feature-settings: 'tnum' 1, 'lnum' 1;
+  }
+
+  /* Status Colors */
+  .status-healthy {
+    @apply text-primary;
+  }
+
+  .status-warning {
+    @apply text-primary;
+  }
+
+  .status-critical {
+    @apply text-primary;
+  }
+
+  /* Orange Accent */
+  .accent-orange {
+    @apply text-primary;
+  }
+
+  .bg-orange {
+    @apply bg-primary;
+  }
+
+  /* Digital Display - Estilo Calculadora Antiga */
+  .digital-display {
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: 'tnum' 1, 'lnum' 1;
+    text-shadow: 
+      0 0 8px currentColor,
+      0 0 12px currentColor,
+      0 0 16px rgba(229, 229, 229, 0.3);
+    letter-spacing: 0.05em;
+    filter: contrast(1.2);
+  }
+}
+
+/* Liquid Glass Container Styles */
+.liquid-glass-container {
+  position: relative;
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+.liquid-container {
+  position: relative;
+  border-radius: 1.5rem;
+  overflow: hidden;
+}
+
+.liquid-container-gradient {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.liquid-container-blur {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.liquid-container-content {
+  position: relative;
+  z-index: 3;
+}
