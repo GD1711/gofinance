@@ -1,0 +1,26 @@
+# ==================== CORE ====================
+fastapi==0.104.1
+uvicorn[standard]==0.24.0
+pydantic==2.5.0
+pydantic-settings==2.1.0
+
+# ==================== VALIDAÇÃO ====================
+email-validator==2.2.0
+
+# ==================== SEGURANÇA ====================
+python-jose[cryptography]==3.3.0
+passlib[bcrypt]==1.7.4
+python-multipart==0.0.17
+
+# ==================== PRODUÇÃO ====================
+gunicorn==23.0.0
+
+# ==================== OBSERVABILIDADE (OPCIONAL) ====================
+# prometheus-fastapi-instrumentator==7.0.0
+# opentelemetry-api==1.27.0
+# opentelemetry-sdk==1.27.0
+
+# ==================== DESENVOLVIMENTO ====================
+pytest==8.3.3
+pytest-asyncio==0.24.0
+httpx==0.27.2

@@ -1,0 +1,83 @@
+# ==================== ESTRUTURA DA API ====================
+
+api/
+├── main.py                 # FastAPI app + endpoints
+├── schemas.py              # Validação Pydantic
+├── config.py               # Configurações
+├── middleware.py           # Rate limit + governança
+├── requirements.txt        # Dependências
+│
+├── engine/                 # Motor de cálculo
+│   ├── __init__.py
+│   ├── progression.py      # Cálculo puro (matemática)
+│   └── insights.py         # Interpretação (psicologia)
+│
+└── tests/                  # Testes (próximo passo)
+    ├── __init__.py
+    ├── test_engine.py
+    ├── test_endpoints.py
+    └── test_validation.py
+
+
+# ==================== ENDPOINTS DISPONÍVEIS ====================
+
+GET  /                              → Health check
+GET  /health                        → Status da API
+GET  /docs                          → OpenAPI (Swagger)
+GET  /redoc                         → ReDoc
+GET  /api/v1/protocols/info         → Info sobre protocolos
+
+POST /api/v1/protocols/progressive  → Criar protocolo progressivo
+POST /api/v1/protocols/optimized    → Criar protocolo otimizado
+POST /api/v1/protocols/compare      → Comparar protocolos
+
+
+# ==================== COMO RODAR ====================
+
+## 1. Instalar dependências
+pip install -r api/requirements.txt
+
+## 2. Rodar em desenvolvimento
+cd api
+python main.py
+
+## 3. Rodar em produção
+cd api
+gunicorn main:app -w 4 -k uvicorn.workers.UvicornWorker --bind 0.0.0.0:8000
+
+
+# ==================== COMO TESTAR ====================
+
+## Via curl
+curl -X POST "http://localhost:8000/api/v1/protocols/progressive" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "goal": {"target_amount": 1000, "periods": 12},
+    "protocol": {"start_value": 1, "increment": 2, "cap": 100}
+  }'
+
+## Via Swagger UI
+http://localhost:8000/docs
+
+
+# ==================== DIFERENCIAIS ====================
+
+✓ Validação comportamental (não só matemática)
+✓ Rate limiting (proteção contra abuso)
+✓ Logs de decisão (observabilidade)
+✓ Separação clara: API → Engine → Insights
+✓ OpenAPI automático (documentação viva)
+✓ Mensagens educacionais (não técnicas)
+✓ Nunca expõe números crus
+✓ Foco em constância, não em retorno
+
+
+# ==================== PRÓXIMOS PASSOS ====================
+
+1. Testes automatizados (pytest)
+2. Autenticação JWT
+3. Banco de dados (PostgreSQL)
+4. Cache (Redis)
+5. Observabilidade (Prometheus + Grafana)
+6. CI/CD (GitHub Actions)
+7. Deploy (Docker + AWS/GCP)

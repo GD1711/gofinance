@@ -9,6 +9,7 @@ import { motion } from 'framer-motion';
 import { CalendarBlank, CheckCircle, Clock, ArrowRight, X } from '@/ui/icons';
 import GlassCard from '@/ui/components/GlassCard';
 import LiquidGlassAnimation from '@/ui/components/LiquidGlassAnimation';
+import FinancialBaseSection from '@/ui/components/FinancialBaseSection';
 
 interface Task {
   id: string;
@@ -96,6 +97,16 @@ export default function DashboardPanel() {
               </div>
             </div>
           </GlassCard>
+        </motion.div>
+
+        {/* Seção Base Financeira - Planejamento Educacional */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2 }}
+          className="mb-8"
+        >
+          <FinancialBaseSection />
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
