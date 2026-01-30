@@ -1,4 +1,4 @@
-# 💰 GoFinance
+#  GoFinance
 
 **Aplicativo de gestão financeira inteligente** com sistema de previsão, gamificação e análise de saúde financeira.
 
