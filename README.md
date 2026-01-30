@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 ﻿<div align="center">
+=======
+#  GoFinance
+>>>>>>> 67e798db3c23ab373773e9ea7da079cdfc5ec885
 
 # 🚀 GoApp Financial Protocol
 
